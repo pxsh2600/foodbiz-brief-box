@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #fbf8f3;
+    color: #1a1a1a;
+    font-family: theme("fontFamily.sans");
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #c9a961;
+    color: #1a1a1a;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .hairline {
+    border-color: rgba(26, 26, 26, 0.12);
+  }
+  .grain {
+    background-image: radial-gradient(
+      rgba(26, 26, 26, 0.045) 1px,
+      transparent 1px
+    );
+    background-size: 3px 3px;
+  }
+}
+
+/* Ambient hero loop — slow warm gradient drift in place of MP4 */
+.ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient::before,
+.ambient::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+}
+.ambient::before {
+  width: 60vmax;
+  height: 60vmax;
+  left: -10vmax;
+  top: -15vmax;
+  background: radial-gradient(circle at 30% 30%, #e7d3a8 0%, transparent 60%);
+  animation: drift1 24s ease-in-out infinite alternate;
+}
+.ambient::after {
+  width: 55vmax;
+  height: 55vmax;
+  right: -12vmax;
+  bottom: -15vmax;
+  background: radial-gradient(circle at 70% 70%, #efe2cf 0%, transparent 60%);
+  animation: drift2 32s ease-in-out infinite alternate;
+}
+
+@keyframes drift1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8vmax, 4vmax, 0) scale(1.1);
+  }
+}
+@keyframes drift2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-6vmax, -3vmax, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient::before,
+  .ambient::after {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* underline input */
+.input-underline {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.35);
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 250ms ease;
+}
+.input-underline:focus {
+  border-bottom-color: #c9a961;
+}
+
+/* chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0.5rem 0.95rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(26, 26, 26, 0.18);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 250ms ease, background 250ms ease;
+}
+.chip:hover {
+  transform: translateY(-1px);
+  border-color: #c9a961;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* marquee wall */
+@keyframes scrollX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: scrollX 60s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* slow zoom utility for hero stills */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(-1%, 1%, 0);
+  }
+}
+.slow-zoom {
+  animation: slowZoom 30s ease-in-out infinite alternate;
+}
+
+/* sub-brand background tints, applied to body via data attr */
+body[data-intent="moira"] {
+  background-color: #fbf3e6;
+}
+body[data-intent="pillar"] {
+  background-color: #eef0f6;
+}
+body[data-intent="caterpillar"] {
+  background-color: #f3f0e6;
+}
+body[data-intent="gummy"] {
+  background-color: #fbefef;
+}
+body[data-intent="parent"] {
+  background-color: #fbf8f3;
+}
+body {
+  transition: background-color 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
