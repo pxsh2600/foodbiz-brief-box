@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { IntentResult } from "@/lib/intent";
 import { CASES, SUBBRANDS, type CaseStudy } from "@/lib/content";
+import { BrandMark } from "./BrandMark";
 
 const FILTERS = ["All", "Weddings", "Corporate", "Brand launches", "Government", "Kids"] as const;
 
@@ -166,20 +167,11 @@ function CaseModal({ c, onClose }: { c: CaseStudy; onClose: () => void }) {
           </button>
         </div>
         <div className="p-6 md:p-10">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-ink/55">
-            <span>{c.year}</span>
-            <span aria-hidden>·</span>
-            <span
-              className="px-2 py-0.5"
-              style={{
-                background: sb.accent,
-                color:
-                  c.subBrand === "gummy" || c.subBrand === "moira"
-                    ? "#1A1A1A"
-                    : "#FBF8F3",
-              }}
-            >
-              {sb.name}
+          <div className="flex items-center gap-4">
+            <BrandMark name={c.subBrand} size="sm" />
+            <span className="h-4 w-px bg-ink/15" />
+            <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
+              {c.year}
             </span>
           </div>
           <h3 className="mt-4 font-display text-3xl md:text-4xl text-ink leading-tight">

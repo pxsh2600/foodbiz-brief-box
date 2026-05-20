@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import type { IntentResult } from "@/lib/intent";
 import { SUBBRANDS } from "@/lib/content";
+import { BrandMark } from "./BrandMark";
 
 export function Reshape({ result }: { result: IntentResult }) {
   const sb = SUBBRANDS[result.intent];
@@ -23,14 +24,15 @@ export function Reshape({ result }: { result: IntentResult }) {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             layout
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-5">
               <span
                 className="inline-block h-px w-10"
                 style={{ background: sb.accent }}
               />
               <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
-                We hear you
+                Page set for
               </span>
+              <BrandMark name={result.intent} size="sm" />
             </div>
             <p className="font-display text-balance text-[clamp(1.6rem,3.2vw,2.2rem)] leading-snug text-ink max-w-3xl">
               {result.ack}

@@ -27,13 +27,39 @@ export function People() {
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-ink/5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.image}
-                  alt={`${p.name}, ${p.role}`}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <div
+                className="relative aspect-[4/5] overflow-hidden border hairline grain"
+                style={{ background: "rgba(26,26,26,0.04)" }}
+                role="img"
+                aria-label={`Portrait of ${p.name} pending`}
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-ink/30">
+                  <svg
+                    width="56"
+                    height="56"
+                    viewBox="0 0 56 56"
+                    fill="none"
+                    aria-hidden
+                  >
+                    <circle cx="28" cy="22" r="9" stroke="currentColor" strokeWidth="1.25" />
+                    <path
+                      d="M11 47c2.5-8 9-13 17-13s14.5 5 17 13"
+                      stroke="currentColor"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                  <p className="mt-4 text-[10px] uppercase tracking-[0.28em]">
+                    Portrait pending
+                  </p>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-[10px] uppercase tracking-[0.22em] text-ink/40">
+                  <span>{p.name.split(" ")[0]}</span>
+                  <span className="font-mono">
+                    0{i + 1}/0{PEOPLE.founders.length}
+                  </span>
+                </div>
               </div>
               <div className="mt-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-ink/55">

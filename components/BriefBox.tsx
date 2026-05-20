@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HERO } from "@/lib/content";
 import { inferIntent, type IntentResult } from "@/lib/intent";
+import { BrandMark } from "./BrandMark";
 
 type Props = {
   engaged: boolean;
@@ -66,7 +67,16 @@ export function BriefBox({
             className="fixed top-0 left-0 right-0 z-40 backdrop-blur bg-cream/80 border-b hairline"
           >
             <div className="mx-auto max-w-6xl px-6 md:px-10 py-3 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3 min-w-0">
+              <div className="flex items-center gap-4 min-w-0">
+                <button
+                  type="button"
+                  onClick={onReset}
+                  aria-label="Foodbiz — back to start"
+                  className="shrink-0"
+                >
+                  <BrandMark name="parent" size="sm" />
+                </button>
+                <span className="h-5 w-px bg-ink/15 shrink-0" />
                 <span className="text-xs uppercase tracking-[0.2em] text-ink/50 shrink-0">
                   Brief
                 </span>
@@ -77,7 +87,7 @@ export function BriefBox({
               <button
                 type="button"
                 onClick={onReset}
-                className="text-sm text-ink/70 hover:text-ink underline underline-offset-4 decoration-gold/60 hover:decoration-gold"
+                className="text-sm text-ink/70 hover:text-ink underline underline-offset-4 decoration-gold/60 hover:decoration-gold shrink-0"
               >
                 {HERO.reset}
               </button>
@@ -96,9 +106,12 @@ export function BriefBox({
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="text-xs uppercase tracking-[0.28em] text-ink/50 mb-6">
-                Foodbiz · since 1996
-              </p>
+              <div className="flex flex-col items-center mb-8">
+                <BrandMark name="parent" size="md" />
+                <p className="mt-3 text-xs uppercase tracking-[0.28em] text-ink/50">
+                  Mumbai · since 1996
+                </p>
+              </div>
 
               <h1 className="font-display tracking-tightish text-balance text-[clamp(2.6rem,6.6vw,5.6rem)] leading-[1.02] text-ink">
                 {HERO.prompt}

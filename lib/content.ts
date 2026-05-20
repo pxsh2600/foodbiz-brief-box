@@ -266,15 +266,13 @@ export const PEOPLE = {
       name: "Amar Jog",
       role: "Co-founder",
       bio: "Amar runs the front of the business — clients, brands, the weeks where everything has to come together. He's been in catering for thirty years and remembers every menu he's ever served.",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+      image: "",
     },
     {
       name: 'Kushal "Kush" Shetty',
       role: "Co-founder",
       bio: "Kush runs the back of the business — the kitchen, the food, the standards. He cooks better than he'll admit. He's also the reason we still know where every ingredient came from.",
-      image:
-        "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80",
+      image: "",
     },
   ],
   team: [

@@ -1,11 +1,15 @@
 "use client";
 
 import { FOOTER } from "@/lib/content";
+import { BrandMark } from "./BrandMark";
 
 export function Footer() {
   return (
     <footer className="relative w-full px-6 md:px-10 pt-20 md:pt-28 pb-10 border-t hairline">
       <div className="mx-auto max-w-6xl">
+        <div className="mb-8">
+          <BrandMark name="parent" size="lg" />
+        </div>
         <p className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink max-w-2xl">
           {FOOTER.closer}
         </p>
@@ -64,7 +68,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t hairline flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-16 pt-8 border-t hairline">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-ink/45 mb-5">
+            The five tables, under one roof
+          </p>
+          <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
+            <BrandMark name="parent" size="sm" />
+            <BrandMark name="moira" size="sm" />
+            <BrandMark name="caterpillar" size="sm" />
+            <BrandMark name="pillar" size="sm" />
+            <BrandMark name="gummy" size="sm" />
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t hairline flex flex-wrap items-center justify-between gap-3">
           <p className="text-xs text-ink/55">{FOOTER.copyright}</p>
           <p className="text-xs text-ink/55 italic">
             Mumbai · Pune · Udaipur · Delhi · Bengaluru

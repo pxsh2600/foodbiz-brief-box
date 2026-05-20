@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { IntentResult } from "@/lib/intent";
 import { FORM_COPY, SUBBRANDS } from "@/lib/content";
+import { BrandMark } from "./BrandMark";
 
 export function BriefForm({
   result,
@@ -65,9 +66,12 @@ export function BriefForm({
       className="relative w-full px-6 md:px-10 py-20 md:py-32 border-t hairline"
     >
       <div className="mx-auto max-w-3xl">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-3">
-          Send a brief
-        </p>
+        <div className="flex items-center gap-3 mb-4">
+          <p className="text-xs uppercase tracking-[0.25em] text-ink/55">
+            Send a brief to
+          </p>
+          <BrandMark name={result.intent} size="sm" />
+        </div>
         <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink">
           {result.formHeading}
         </h2>
