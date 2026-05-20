@@ -60,13 +60,20 @@ export function Numbers() {
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-10 md:mb-14"
+          className="eyebrow mb-10 md:mb-14"
         >
           The numbers
         </motion.p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
-          {NUMBERS.map((s) => (
-            <Stat key={s.label} {...s} />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0">
+          {NUMBERS.map((s, i) => (
+            <div
+              key={s.label}
+              className={`md:px-8 ${
+                i > 0 ? "md:border-l hairline" : ""
+              }`}
+            >
+              <Stat {...s} />
+            </div>
           ))}
         </div>
       </div>

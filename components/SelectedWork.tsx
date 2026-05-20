@@ -38,12 +38,17 @@ export function SelectedWork({ result }: { result: IntentResult }) {
       className="relative w-full px-6 md:px-10 py-20 md:py-28 border-t hairline"
     >
       <div className="mx-auto max-w-6xl mb-10 md:mb-14">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-3">
-          Selected work
-        </p>
-        <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink max-w-3xl">
-          A working selection. The full list is longer and quieter.
-        </h2>
+        <div className="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <p className="eyebrow mb-4">Selected work</p>
+            <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink max-w-3xl">
+              A working selection. The full list is longer and quieter.
+            </h2>
+          </div>
+          <p className="text-xs font-mono uppercase tracking-[0.22em] text-ink/45 self-end pb-1">
+            {cases.length.toString().padStart(2, "0")} / 80+
+          </p>
+        </div>
 
         <div className="mt-8 flex flex-wrap gap-2">
           {FILTERS.map((f) => (
@@ -89,30 +94,38 @@ export function SelectedWork({ result }: { result: IntentResult }) {
                 alt={`${c.client} — ${c.event}`}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-90" />
-              <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 text-cream">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-sm md:text-base font-medium truncate">
-                      {c.client}
-                    </p>
-                    <p className="text-xs text-cream/75 truncate">
-                      {c.event} · {c.year}
-                    </p>
-                  </div>
-                  <span
-                    className="text-[10px] uppercase tracking-[0.2em] px-2 py-0.5 shrink-0"
-                    style={{
-                      background: SUBBRANDS[c.subBrand].accent,
-                      color:
-                        c.subBrand === "gummy" || c.subBrand === "moira"
-                          ? "#1A1A1A"
-                          : "#FBF8F3",
-                    }}
-                  >
-                    {SUBBRANDS[c.subBrand].name}
-                  </span>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent opacity-95" />
+
+              {/* corner accent rule in the routed sub-brand colour */}
+              <span
+                className="absolute top-0 left-0 h-[3px] w-12 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
+                style={{ background: SUBBRANDS[c.subBrand].accent }}
+                aria-hidden
+              />
+
+              {/* top-left BrandMark pill */}
+              <div className="absolute top-3 left-3">
+                <span className="brand-pill">
+                  <BrandMark name={c.subBrand} size="sm" />
+                </span>
+              </div>
+
+              {/* top-right year */}
+              <span className="absolute top-4 right-4 text-[10px] font-mono uppercase tracking-[0.2em] text-cream/85">
+                {c.year}
+              </span>
+
+              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 text-cream">
+                <p className="text-base md:text-lg font-display leading-tight truncate">
+                  {c.client}
+                </p>
+                <p className="text-xs md:text-sm text-cream/75 truncate mt-1">
+                  {c.event}
+                </p>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-cream/0 group-hover:text-cream/90 transition-colors duration-300">
+                  Open
+                  <span aria-hidden>→</span>
+                </span>
               </div>
             </motion.button>
           );
@@ -193,8 +206,14 @@ function CaseModal({ c, onClose }: { c: CaseStudy; onClose: () => void }) {
             <a
               href="#brief"
               onClick={onClose}
-              className="inline-flex items-center gap-2 px-5 py-3 text-sm uppercase tracking-[0.2em] text-cream"
-              style={{ background: sb.accent }}
+              className="btn-primary"
+              style={{
+                background: sb.accent,
+                color:
+                  c.subBrand === "gummy" || c.subBrand === "moira"
+                    ? "#1A1A1A"
+                    : "#FBF8F3",
+              }}
             >
               Brief us on something similar
               <span aria-hidden>→</span>

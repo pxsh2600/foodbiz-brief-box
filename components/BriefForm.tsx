@@ -66,11 +66,13 @@ export function BriefForm({
       className="relative w-full px-6 md:px-10 py-20 md:py-32 border-t hairline"
     >
       <div className="mx-auto max-w-3xl">
-        <div className="flex items-center gap-3 mb-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-ink/55">
-            Send a brief to
-          </p>
-          <BrandMark name={result.intent} size="sm" />
+        <p className="eyebrow mb-5">Send a brief</p>
+        <div className="flex items-center gap-3 mb-3">
+          <BrandMark name={result.intent} size="md" />
+          <span className="h-5 w-px bg-ink/15" />
+          <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
+            routes to {SUBBRANDS[result.intent].name}
+          </span>
         </div>
         <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink">
           {result.formHeading}
@@ -181,8 +183,8 @@ export function BriefForm({
               <div className="md:col-span-2 mt-2 flex flex-wrap items-center gap-5">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm uppercase tracking-[0.22em] text-cream hover:opacity-90 transition"
-                  style={{ background: accent }}
+                  className="btn-primary"
+                  style={{ background: accent, color: result.intent === "gummy" || result.intent === "moira" ? "#1A1A1A" : "#FBF8F3" }}
                 >
                   {result.formCta}
                   <span aria-hidden>→</span>
@@ -199,11 +201,19 @@ export function BriefForm({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-10 p-8 md:p-10 border hairline bg-cream/60"
+              className="mt-10 p-8 md:p-10 border hairline bg-cream/70 relative overflow-hidden"
             >
-              <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-3">
-                Brief received
-              </p>
+              <span
+                className="absolute top-0 left-0 h-1 w-24"
+                style={{ background: accent }}
+                aria-hidden
+              />
+              <div className="flex items-center gap-3 mb-3">
+                <p className="text-xs uppercase tracking-[0.25em] text-ink/55">
+                  Brief received · routed to
+                </p>
+                <BrandMark name={result.intent} size="sm" />
+              </div>
               <p className="font-display text-2xl md:text-3xl text-ink leading-snug">
                 Got it,{" "}
                 <span

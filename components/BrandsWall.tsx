@@ -15,9 +15,7 @@ export function BrandsWall() {
       className="relative w-full px-6 md:px-10 py-20 md:py-28 border-t hairline"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-10 md:mb-14">
-          Brands we've hosted
-        </p>
+        <p className="eyebrow mb-10 md:mb-14">Brands we've hosted</p>
 
         <div className="font-display leading-[1.05] text-balance text-[clamp(2rem,5.5vw,4.5rem)] tracking-tightish">
           {BRANDS_WALL.map((b, i) => (

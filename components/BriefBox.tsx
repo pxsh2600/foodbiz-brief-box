@@ -177,6 +177,10 @@ export function BriefBox({
                   <p className="mt-6 text-xs text-ink/40">{HERO.langNote}</p>
                 </div>
               </form>
+
+              <div className="mt-16 flex justify-center">
+                <span className="scroll-cue">A quick read below</span>
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -190,33 +194,21 @@ export function BriefBox({
               <p className="text-xs uppercase tracking-[0.28em] text-ink/50 mb-4">
                 Reshaping for you
               </p>
+              <div className="flex items-center justify-center mb-6">
+                <BrandMark name={result.intent} size="lg" />
+              </div>
               <h2 className="font-display text-balance text-[clamp(1.8rem,3.5vw,2.6rem)] leading-tight text-ink max-w-2xl mx-auto">
                 {result.ack}
               </h2>
-              <p className="mt-6 text-sm text-ink/60 italic">
-                Scroll on — the page below is set for {brandLabel(result.intent)}.
-              </p>
+              <div className="mt-10 flex justify-center">
+                <span className="scroll-cue">Scroll</span>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </section>
   );
-}
-
-function brandLabel(intent: IntentResult["intent"]) {
-  switch (intent) {
-    case "moira":
-      return "Moira";
-    case "pillar":
-      return "Pillar Live";
-    case "caterpillar":
-      return "Caterpillar";
-    case "gummy":
-      return "Gummy Gourmet";
-    default:
-      return "Foodbiz";
-  }
 }
 
 // re-export inferIntent for the page component

@@ -17,9 +17,14 @@ export function FiveTables({ result }: { result: IntentResult }) {
     >
       <div className="mx-auto max-w-6xl mb-10 md:mb-14 flex items-end justify-between gap-6">
         <div>
-          <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-3">
-            The five tables
-          </p>
+          <p className="eyebrow mb-4">The five tables</p>
+          <div className="flex items-center gap-4 mb-3">
+            <BrandMark name="parent" size="sm" />
+            <span className="h-5 w-px bg-ink/15" />
+            <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
+              parent brand
+            </span>
+          </div>
           <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink max-w-2xl">
             Five specialist brands. One kitchen behind them.
           </h2>
@@ -69,9 +74,10 @@ export function FiveTables({ result }: { result: IntentResult }) {
                   className="absolute inset-x-0 bottom-0 p-5 md:p-6 text-cream"
                   style={{ color: "#FBF8F3" }}
                 >
-                  <div className="mb-3">
-                    <BrandMark name={id} variant="light" size="md" />
-                  </div>
+                  {/* BrandMark sits in a clean pill so the natural-colour marks read correctly on dark photos */}
+                  <span className="brand-pill mb-4">
+                    <BrandMark name={id} size="sm" />
+                  </span>
                   <p className="font-display text-xl md:text-2xl leading-snug">
                     {sb.tagline}
                   </p>
@@ -85,12 +91,13 @@ export function FiveTables({ result }: { result: IntentResult }) {
                 </div>
                 {result.intent === id && (
                   <div
-                    className="absolute top-4 left-4 px-2 py-1 text-[10px] uppercase tracking-[0.22em] font-medium"
+                    className="absolute top-4 left-4 px-2.5 py-1 text-[10px] uppercase tracking-[0.22em] font-medium flex items-center gap-1.5"
                     style={{
                       background: sb.accent,
                       color: id === "gummy" || id === "moira" ? "#1A1A1A" : "#FBF8F3",
                     }}
                   >
+                    <span className="block w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
                     Set for you
                   </div>
                 )}
@@ -159,8 +166,14 @@ function Lightbox({
             <a
               href="#brief"
               onClick={onClose}
-              className="inline-flex items-center gap-2 px-5 py-3 text-sm uppercase tracking-[0.2em] text-cream"
-              style={{ background: sb.accent }}
+              className="btn-primary"
+              style={{
+                background: sb.accent,
+                color:
+                  subBrandId === "gummy" || subBrandId === "moira"
+                    ? "#1A1A1A"
+                    : "#FBF8F3",
+              }}
             >
               {sb.cta}
               <span aria-hidden>→</span>
@@ -168,7 +181,7 @@ function Lightbox({
             <button
               type="button"
               onClick={onClose}
-              className="text-sm text-ink/65 hover:text-ink underline underline-offset-4"
+              className="text-sm text-ink/65 hover:text-ink underline underline-offset-4 decoration-gold/60 hover:decoration-gold"
             >
               Keep looking
             </button>

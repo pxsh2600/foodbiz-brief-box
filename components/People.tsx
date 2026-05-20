@@ -10,9 +10,7 @@ export function People() {
       className="relative w-full px-6 md:px-10 py-20 md:py-28 border-t hairline"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="text-xs uppercase tracking-[0.25em] text-ink/55 mb-3">
-          The people
-        </p>
+        <p className="eyebrow mb-5">The people</p>
         <h2 className="font-display text-balance text-3xl md:text-5xl leading-tight text-ink max-w-3xl">
           {PEOPLE.opener}
         </h2>
@@ -28,11 +26,20 @@ export function People() {
               className="group"
             >
               <div
-                className="relative aspect-[4/5] overflow-hidden border hairline grain"
+                className="relative aspect-[4/5] overflow-hidden border hairline grain group-hover:border-gold/70 transition-colors duration-500"
                 style={{ background: "rgba(26,26,26,0.04)" }}
                 role="img"
                 aria-label={`Portrait of ${p.name} pending`}
               >
+                {/* corner accent */}
+                <span
+                  className="absolute top-3 left-3 h-3 w-3 border-l border-t border-ink/20 group-hover:border-gold transition-colors duration-500"
+                  aria-hidden
+                />
+                <span
+                  className="absolute bottom-3 right-3 h-3 w-3 border-r border-b border-ink/20 group-hover:border-gold transition-colors duration-500"
+                  aria-hidden
+                />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-ink/30">
                   <svg
                     width="56"
@@ -74,14 +81,19 @@ export function People() {
           ))}
         </div>
 
-        <div className="mt-16 md:mt-20">
-          <p className="text-xs uppercase tracking-[0.22em] text-ink/55 mb-6">
-            The team behind the work
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {PEOPLE.team.map((t) => (
-              <div key={t.name} className="border-l hairline pl-4">
-                <p className="font-display text-lg text-ink">{t.name}</p>
+        <div className="mt-16 md:mt-24">
+          <p className="eyebrow mb-8">The team behind the work</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+            {PEOPLE.team.map((t, i) => (
+              <div
+                key={t.name}
+                className="group relative pl-5 border-l hairline hover:border-l-gold transition-colors duration-300"
+              >
+                <span className="absolute -left-px top-0 h-8 w-px bg-gold scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300" />
+                <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-ink/40">
+                  0{i + 1}
+                </p>
+                <p className="font-display text-xl text-ink mt-2">{t.name}</p>
                 <p className="text-xs uppercase tracking-[0.18em] text-ink/55 mt-1">
                   {t.role}
                 </p>
