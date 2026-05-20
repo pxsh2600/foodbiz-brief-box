@@ -26,7 +26,7 @@ export function People() {
               className="group"
             >
               <div
-                className="relative aspect-[4/5] overflow-hidden border hairline grain group-hover:border-gold/70 transition-colors duration-500"
+                className="relative aspect-[3/2] sm:aspect-[4/5] overflow-hidden border hairline grain group-hover:border-gold/70 transition-colors duration-500"
                 style={{ background: "rgba(26,26,26,0.04)" }}
                 role="img"
                 aria-label={`Portrait of ${p.name} pending`}

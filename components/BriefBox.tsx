@@ -49,7 +49,7 @@ export function BriefBox({
     <section
       id="hero"
       aria-label="Brief box"
-      className="relative min-h-[100svh] w-full flex items-center justify-center px-6 md:px-10 overflow-hidden"
+      className="relative min-h-[100svh] w-full flex items-center justify-center px-5 sm:px-6 md:px-10 py-24 md:py-16 overflow-hidden"
     >
       {/* ambient detail — slow drifting gradients in place of an MP4 */}
       <div className="ambient" aria-hidden />
@@ -66,8 +66,8 @@ export function BriefBox({
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed top-0 left-0 right-0 z-40 backdrop-blur bg-cream/80 border-b hairline"
           >
-            <div className="mx-auto max-w-6xl px-6 md:px-10 py-3 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4 min-w-0">
+            <div className="mx-auto max-w-6xl px-4 md:px-10 py-2.5 md:py-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 md:gap-4 min-w-0">
                 <button
                   type="button"
                   onClick={onReset}
@@ -76,18 +76,18 @@ export function BriefBox({
                 >
                   <BrandMark name="parent" size="sm" />
                 </button>
-                <span className="h-5 w-px bg-ink/15 shrink-0" />
-                <span className="text-xs uppercase tracking-[0.2em] text-ink/50 shrink-0">
+                <span className="hidden md:block h-5 w-px bg-ink/15 shrink-0" />
+                <span className="hidden md:inline text-xs uppercase tracking-[0.2em] text-ink/50 shrink-0">
                   Brief
                 </span>
-                <span className="font-display text-lg md:text-xl text-ink truncate">
+                <span className="font-display text-sm md:text-xl text-ink truncate">
                   {input}
                 </span>
               </div>
               <button
                 type="button"
                 onClick={onReset}
-                className="text-sm text-ink/70 hover:text-ink underline underline-offset-4 decoration-gold/60 hover:decoration-gold shrink-0"
+                className="text-xs md:text-sm text-ink/70 hover:text-ink underline underline-offset-4 decoration-gold/60 hover:decoration-gold shrink-0"
               >
                 {HERO.reset}
               </button>
@@ -113,7 +113,7 @@ export function BriefBox({
                 </p>
               </div>
 
-              <h1 className="font-display tracking-tightish text-balance text-[clamp(2.6rem,6.6vw,5.6rem)] leading-[1.02] text-ink">
+              <h1 className="font-display tracking-tightish text-balance text-[clamp(2.2rem,7vw,5.6rem)] leading-[1.02] text-ink">
                 {HERO.prompt}
               </h1>
 
@@ -152,7 +152,7 @@ export function BriefBox({
                 </AnimatePresence>
 
                 <div className="mt-8 md:mt-10">
-                  <div className="flex md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar pb-1 md:overflow-visible">
+                  <div className="flex md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar pb-1 md:overflow-visible chip-scroll-mask -mx-4 px-4 md:mx-0 md:px-0">
                     {HERO.chips.map((c, i) => (
                       <motion.button
                         key={c}
@@ -178,7 +178,7 @@ export function BriefBox({
                 </div>
               </form>
 
-              <div className="mt-16 flex justify-center">
+              <div className="mt-10 md:mt-16 flex justify-center">
                 <span className="scroll-cue">A quick read below</span>
               </div>
             </motion.div>

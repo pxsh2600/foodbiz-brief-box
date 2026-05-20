@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,6 +11,13 @@ export const metadata: Metadata = {
       "Thirty years. Five specialist brands. One promise: be present, leave the rest to us.",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#FBF8F3",
 };
 
 export default function RootLayout({

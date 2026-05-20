@@ -24,7 +24,7 @@ export function Reshape({ result }: { result: IntentResult }) {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             layout
           >
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center flex-wrap gap-x-3 gap-y-2 mb-5">
               <span
                 className="inline-block h-px w-10"
                 style={{ background: sb.accent }}

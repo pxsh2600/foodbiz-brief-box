@@ -21,7 +21,7 @@ export function Story() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-ink/5"
+          className="relative aspect-[3/2] sm:aspect-[4/5] md:aspect-[5/6] overflow-hidden bg-ink/5"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -81,12 +81,14 @@ export function Story() {
                   </span>
                   <span className="text-xs font-mono text-ink/45">0:20</span>
                 </div>
-                {/* fake waveform */}
+                {/* fake waveform — fewer bars on small screens so they don't get cramped */}
                 <div className="flex items-end gap-[2px] h-6">
                   {Array.from({ length: 48 }).map((_, i) => (
                     <span
                       key={i}
-                      className="block w-[3px] bg-ink/35"
+                      className={`block w-[3px] bg-ink/35 ${
+                        i >= 28 ? "hidden sm:block" : ""
+                      }`}
                       style={{
                         height: `${
                           30 +

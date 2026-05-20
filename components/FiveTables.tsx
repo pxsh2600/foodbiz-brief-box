@@ -15,12 +15,12 @@ export function FiveTables({ result }: { result: IntentResult }) {
       id="tables"
       className="relative w-full px-6 md:px-10 py-20 md:py-28 border-t hairline"
     >
-      <div className="mx-auto max-w-6xl mb-10 md:mb-14 flex items-end justify-between gap-6">
+      <div className="mx-auto max-w-6xl mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <p className="eyebrow mb-4">The five tables</p>
-          <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center flex-wrap gap-x-4 gap-y-2 mb-3">
             <BrandMark name="parent" size="sm" />
-            <span className="h-5 w-px bg-ink/15" />
+            <span className="hidden sm:block h-5 w-px bg-ink/15" />
             <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
               parent brand
             </span>
@@ -29,8 +29,8 @@ export function FiveTables({ result }: { result: IntentResult }) {
             Five specialist brands. One kitchen behind them.
           </h2>
         </div>
-        <p className="hidden md:block max-w-xs text-sm text-ink/60 text-pretty">
-          Whichever you came for, the others are here too. Hover one to see it bigger.
+        <p className="max-w-xs text-sm text-ink/60 text-pretty">
+          Whichever you came for, the others are here too. Tap one to read more.
         </p>
       </div>
 
@@ -47,12 +47,11 @@ export function FiveTables({ result }: { result: IntentResult }) {
                 onClick={() => setOpen(id)}
                 onMouseEnter={() => setHovered(id)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative text-left group bg-cream overflow-hidden"
+                className="relative text-left group bg-cream overflow-hidden min-h-[320px] md:min-h-[560px]"
                 animate={{
                   flexGrow: isHovered ? 1.4 : 1,
                 }}
                 style={{
-                  minHeight: "clamp(420px, 60vh, 620px)",
                   flex: isHovered ? 1.4 : 1,
                   opacity: anyHovered && !isHovered ? 0.78 : 1,
                   transition: "opacity 400ms ease, flex 500ms cubic-bezier(0.22,1,0.36,1)",
@@ -81,7 +80,7 @@ export function FiveTables({ result }: { result: IntentResult }) {
                   <p className="font-display text-xl md:text-2xl leading-snug">
                     {sb.tagline}
                   </p>
-                  <p className="mt-3 text-sm text-cream/85 max-w-sm hidden md:block">
+                  <p className="mt-3 text-sm text-cream/85 max-w-sm line-clamp-3 md:line-clamp-none">
                     {sb.description}
                   </p>
                   <p className="mt-4 text-xs uppercase tracking-[0.2em] text-cream/80 inline-flex items-center gap-2">

@@ -17,7 +17,7 @@ export function BrandsWall() {
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow mb-10 md:mb-14">Brands we've hosted</p>
 
-        <div className="font-display leading-[1.05] text-balance text-[clamp(2rem,5.5vw,4.5rem)] tracking-tightish">
+        <div className="font-display leading-[1.1] text-balance text-[clamp(1.6rem,5.5vw,4.5rem)] tracking-tightish">
           {BRANDS_WALL.map((b, i) => (
             <motion.span
               key={b.name}
@@ -55,7 +55,7 @@ export function BrandsWall() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-ink/55 italic block mt-6 text-[clamp(1rem,1.8vw,1.4rem)] font-sans not-italic tracking-normal"
+            className="text-ink/55 block mt-6 text-[clamp(1rem,1.8vw,1.4rem)] font-sans tracking-normal leading-snug"
           >
             {BRANDS_CLOSE}
           </motion.span>

@@ -67,9 +67,9 @@ export function BriefForm({
     >
       <div className="mx-auto max-w-3xl">
         <p className="eyebrow mb-5">Send a brief</p>
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center flex-wrap gap-x-3 gap-y-2 mb-3">
           <BrandMark name={result.intent} size="md" />
-          <span className="h-5 w-px bg-ink/15" />
+          <span className="hidden sm:block h-5 w-px bg-ink/15" />
           <span className="text-xs uppercase tracking-[0.22em] text-ink/55">
             routes to {SUBBRANDS[result.intent].name}
           </span>
@@ -208,7 +208,7 @@ export function BriefForm({
                 style={{ background: accent }}
                 aria-hidden
               />
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center flex-wrap gap-x-3 gap-y-2 mb-3">
                 <p className="text-xs uppercase tracking-[0.25em] text-ink/55">
                   Brief received · routed to
                 </p>

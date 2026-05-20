@@ -92,7 +92,7 @@ function PreEngageTeaser() {
   return (
     <section
       aria-hidden
-      className="relative w-full px-6 md:px-10 pb-20 md:pb-28 -mt-16 md:-mt-24"
+      className="relative w-full px-6 md:px-10 pb-20 md:pb-28"
     >
       <div className="mx-auto max-w-6xl text-center">
         <p className="text-xs uppercase tracking-[0.28em] text-ink/45">

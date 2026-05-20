@@ -79,8 +79,9 @@ export function BottomDock({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 px-5 py-3 bg-ink text-cream text-[11px] uppercase tracking-[0.22em] rounded-full"
+            className="md:hidden fixed right-4 z-40 inline-flex items-center gap-2 px-5 py-3 bg-ink text-cream text-[11px] uppercase tracking-[0.22em] rounded-full"
             style={{
+              bottom: "max(1rem, env(safe-area-inset-bottom))",
               boxShadow: "0 14px 30px rgba(26,26,26,0.35)",
             }}
           >

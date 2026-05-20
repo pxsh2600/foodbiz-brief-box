@@ -68,14 +68,16 @@ export function SelectedWork({ result }: { result: IntentResult }) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4 auto-rows-[160px] md:auto-rows-[220px]">
+      <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4 auto-rows-[170px] md:auto-rows-[220px]">
         {cases.map((c, i) => {
+          // Bento spans: wide = full row, tall = half-width × 2 rows, square = half-width × 1 row.
+          // Same logic at mobile and desktop, but desktop uses a 6-col grid so spans grow.
           const span =
             c.size === "wide"
               ? "col-span-2 md:col-span-4 row-span-2"
               : c.size === "tall"
-              ? "col-span-2 md:col-span-2 row-span-2"
-              : "col-span-2 md:col-span-2 row-span-1";
+              ? "col-span-1 md:col-span-2 row-span-2"
+              : "col-span-1 md:col-span-2 row-span-1";
 
           return (
             <motion.button
@@ -110,19 +112,19 @@ export function SelectedWork({ result }: { result: IntentResult }) {
                 </span>
               </div>
 
-              {/* top-right year */}
-              <span className="absolute top-4 right-4 text-[10px] font-mono uppercase tracking-[0.2em] text-cream/85">
+              {/* top-right year — hidden on small tiles where space is tight */}
+              <span className="hidden md:block absolute top-4 right-4 text-[10px] font-mono uppercase tracking-[0.2em] text-cream/85">
                 {c.year}
               </span>
 
-              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 text-cream">
-                <p className="text-base md:text-lg font-display leading-tight truncate">
+              <div className="absolute inset-x-0 bottom-0 p-3 md:p-5 text-cream">
+                <p className="text-sm md:text-lg font-display leading-tight truncate">
                   {c.client}
                 </p>
-                <p className="text-xs md:text-sm text-cream/75 truncate mt-1">
-                  {c.event}
+                <p className="text-[11px] md:text-sm text-cream/75 truncate mt-0.5 md:mt-1">
+                  {c.event} · {c.year}
                 </p>
-                <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-cream/0 group-hover:text-cream/90 transition-colors duration-300">
+                <span className="hidden md:inline-flex mt-3 items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-cream/0 group-hover:text-cream/90 transition-colors duration-300">
                   Open
                   <span aria-hidden>→</span>
                 </span>

@@ -72,7 +72,7 @@ export function Footer() {
           <p className="text-[10px] uppercase tracking-[0.28em] text-ink/45 mb-5">
             The five tables, under one roof
           </p>
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap items-center gap-x-6 md:gap-x-10 gap-y-5">
             <BrandMark name="parent" size="sm" />
             <BrandMark name="moira" size="sm" />
             <BrandMark name="caterpillar" size="sm" />
